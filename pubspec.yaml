@@ -1,0 +1,43 @@
+name: toolify
+description: "A new Flutter project."
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.4.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.6
+  image_picker: ^1.1.2
+  http: ^1.2.2
+  hexcolor: ^3.0.1
+  cached_network_image: ^3.4.1
+  auto_size_text: ^3.0.0
+  icons_launcher: ^2.1.7
+  flutter_dotenv: ^5.1.0
+  flutter_lints: ^4.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+icons_launcher:
+  image_path: "assets/app_icon.png"
+  platforms:
+    android:
+      enable: true
+    ios:
+      enable: true
+
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/app_icon.png
+    - .env
