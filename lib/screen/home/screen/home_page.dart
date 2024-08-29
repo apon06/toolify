@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:toolify/screen/home/widgets/home_page_text.dart';
 import '../../../app/plant_identify/plant_identify_page.dart';
+import '../../../app/qr_generate/qr_generate_page.dart';
 import '../widgets/home_page_card.dart';
 
 class HomePage extends StatelessWidget {
@@ -30,9 +31,9 @@ class HomePage extends StatelessWidget {
                       location: PlantIdentifierPage(),
                     ),
                     HomePageCard(
-                      image: 'https://i.postimg.cc/QMWYLmrh/bmi.png',
-                      text: 'BMR Calculeror',
-                      location: HomePage(),
+                      image: 'https://i.postimg.cc/13BbHRzf/qr-gen.jpg',
+                      text: 'Qr Generate',
+                      location: QrGeneratePage(),
                     ),
                     HomePageCard(
                       image: 'https://i.postimg.cc/QMWYLmrh/bmi.png',
