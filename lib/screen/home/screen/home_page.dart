@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:toolify/app/cube_timer/cube_timer.dart';
 import 'package:toolify/screen/home/widgets/home_page_text.dart';
 import '../../../app/plant_identify/plant_identify_page.dart';
 import '../../../app/qr_generate/qr_generate_page.dart';
@@ -31,13 +32,14 @@ class HomePage extends StatelessWidget {
                       location: PlantIdentifierPage(),
                     ),
                     HomePageCard(
-                      image: 'https://i.postimg.cc/13BbHRzf/qr-gen.jpg',
+                      image: 'https://i.postimg.cc/jScWH1JR/qr-code-gen.png',
                       text: 'Qr Generate',
                       location: QrGeneratePage(),
                     ),
                     HomePageCard(
-                      image: 'https://i.postimg.cc/QMWYLmrh/bmi.png',
-                      text: 'Age Calculetor',
+                      image: 'https://i.postimg.cc/59Xq1TPH/timer2.png',
+                      text: 'Cube Timer',
+                      location: CubeTimer(),
                     ),
                     HomePageCard(
                       image: 'https://i.postimg.cc/QMWYLmrh/bmi.png',
