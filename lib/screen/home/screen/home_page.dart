@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:toolify/app/cube_timer/cube_timer.dart';
 import 'package:toolify/screen/home/widgets/home_page_text.dart';
+import '../../../app/countdown_timer/countdown_timer.dart';
 import '../../../app/plant_identify/plant_identify_page.dart';
 import '../../../app/qr_generate/qr_generate_page.dart';
 import '../widgets/home_page_card.dart';
@@ -21,7 +22,7 @@ class HomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const HomePageText(text: 'Calculetor'),
+                const HomePageText(text: 'Random Apps'),
                 GridView.count(
                   shrinkWrap: true,
                   crossAxisCount: 3,
@@ -38,12 +39,13 @@ class HomePage extends StatelessWidget {
                     ),
                     HomePageCard(
                       image: 'https://i.postimg.cc/59Xq1TPH/timer2.png',
-                      text: 'Cube Timer',
-                      location: CubeTimer(),
+                      text: 'Timer',
+                      location: TimerApp(),
                     ),
                     HomePageCard(
-                      image: 'https://i.postimg.cc/QMWYLmrh/bmi.png',
-                      text: 'Tip Calculetor',
+                      image: 'https://i.postimg.cc/wvQ7KSMG/countdown.png',
+                      text: 'Countdown Timer',
+                      location: CountdownTimer(),
                     ),
                     HomePageCard(
                       image: 'https://i.postimg.cc/QMWYLmrh/bmi.png',

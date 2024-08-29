@@ -2,15 +2,15 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-class CubeTimer extends StatefulWidget {
-  const CubeTimer({super.key});
+class TimerApp extends StatefulWidget {
+  const TimerApp({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
-  _CubeTimerState createState() => _CubeTimerState();
+  _TimerStateApp createState() => _TimerStateApp();
 }
 
-class _CubeTimerState extends State<CubeTimer> {
+class _TimerStateApp extends State<TimerApp> {
   Timer? _timer;
   int _milliseconds = 0;
   bool _isRunning = false;
@@ -57,7 +57,7 @@ class _CubeTimerState extends State<CubeTimer> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Cube Timer'),
+        title: const Text('Timer'),
       ),
       body: Center(
         child: GestureDetector(
