@@ -55,7 +55,7 @@ class HomePage extends StatelessWidget {
                       location: CountdownTimer(),
                     ),
                     HomePageCard(
-                      image: 'https://i.postimg.cc/wvQ7KSMG/countdown.png',
+                      image: 'https://i.postimg.cc/hvhn8LM2/age-cal.png',
                       text: 'Age Calculator',
                       location: AgeCalculator(),
                     ),

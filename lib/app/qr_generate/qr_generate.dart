@@ -10,7 +10,7 @@ class QrGenerate extends StatefulWidget {
 
 class _QrGeneratePageS extends State<QrGenerate> {
   var qrData = "";
-  final int maxLength = 5000;
+  final int maxLength = 2200;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class _QrGeneratePageS extends State<QrGenerate> {
             QrImageView(
               data: qrData,
               version: QrVersions.auto,
-              size: 500.0,
+              size: 300.0,
               backgroundColor: Colors.white,
             ),
             const SizedBox(height: 10),
@@ -49,7 +49,7 @@ class _QrGeneratePageS extends State<QrGenerate> {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: const Text(
-                            'Maximum 5000 character limit reached',
+                            'Maximum 2200 character limit reached',
                             style: TextStyle(color: Colors.white),
                           ),
                           backgroundColor: Colors.red[700],
