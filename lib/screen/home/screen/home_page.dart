@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:toolify/app/cube_timer/cube_timer.dart';
 import 'package:toolify/screen/home/widgets/home_page_text.dart';
+import '../../../app/age_calculate/age_calculator.dart';
+import '../../../app/barcode_generate/barcode_generate.dart';
 import '../../../app/countdown_timer/countdown_timer.dart';
-import '../../../app/plant_identify/plant_identify_page.dart';
-import '../../../app/qr_generate/qr_generate_page.dart';
+import '../../../app/plant_identify/plant_identify.dart';
+import '../../../app/qr_generate/qr_generate.dart';
 import '../widgets/home_page_card.dart';
 
 class HomePage extends StatelessWidget {
@@ -30,12 +32,17 @@ class HomePage extends StatelessWidget {
                     HomePageCard(
                       image: 'https://i.postimg.cc/sfmXjh3Q/plant.png',
                       text: 'Plant Find',
-                      location: PlantIdentifierPage(),
+                      location: PlantIdentifier(),
                     ),
                     HomePageCard(
                       image: 'https://i.postimg.cc/jScWH1JR/qr-code-gen.png',
                       text: 'Qr Generate',
-                      location: QrGeneratePage(),
+                      location: QrGenerate(),
+                    ),
+                    HomePageCard(
+                      image: 'https://i.postimg.cc/7hhxhZDp/barcode.png',
+                      text: 'BarCode Generate',
+                      location: BarcodeGenerate(),
                     ),
                     HomePageCard(
                       image: 'https://i.postimg.cc/59Xq1TPH/timer2.png',
@@ -48,8 +55,9 @@ class HomePage extends StatelessWidget {
                       location: CountdownTimer(),
                     ),
                     HomePageCard(
-                      image: 'https://i.postimg.cc/QMWYLmrh/bmi.png',
-                      text: 'Profit Calculetor',
+                      image: 'https://i.postimg.cc/wvQ7KSMG/countdown.png',
+                      text: 'Age Calculator',
+                      location: AgeCalculator(),
                     ),
                   ],
                 ),

@@ -1,32 +1,41 @@
+import 'package:barcode_widget/barcode_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:qr_flutter/qr_flutter.dart';
 
-class QrGeneratePage extends StatefulWidget {
-  const QrGeneratePage({super.key});
+class BarcodeGenerate extends StatefulWidget {
+  const BarcodeGenerate({super.key});
 
   @override
-  State<QrGeneratePage> createState() => _QrGeneratePageState();
+  State<BarcodeGenerate> createState() => _BarcodeGenerateState();
 }
 
-class _QrGeneratePageState extends State<QrGeneratePage> {
+class _BarcodeGenerateState extends State<BarcodeGenerate> {
   var qrData = "";
-  final int maxLength = 2200;
+  final int maxLength = 100;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Qr Code Generate'),
+        title: const Text('BarCode Generate'),
       ),
       body: Center(
         child: Column(
           children: [
             const SizedBox(height: 15),
-            QrImageView(
-              data: qrData,
-              version: QrVersions.auto,
-              size: 300.0,
-              backgroundColor: Colors.white,
+            Container(
+              width: 320,
+              height: 130,
+              color: Colors.white,
+              child: Center(
+                child: BarcodeWidget(
+                  barcode: Barcode.code128(),
+                  data: qrData,
+                  width: 300,
+                  height: 100,
+                  backgroundColor: Colors.white,
+                  style: const TextStyle(color: Colors.black),
+                ),
+              ),
             ),
             const SizedBox(height: 10),
             Container(
@@ -49,7 +58,7 @@ class _QrGeneratePageState extends State<QrGeneratePage> {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: const Text(
-                            'Maximum 2200 character limit reached',
+                            'Maximum 100 character limit reached',
                             style: TextStyle(color: Colors.white),
                           ),
                           backgroundColor: Colors.red[700],
@@ -69,7 +78,7 @@ class _QrGeneratePageState extends State<QrGeneratePage> {
                   decoration: const InputDecoration(
                     hintText: 'Enter Your Text',
                     border: InputBorder.none,
-                    counterText: "", // Hides the maxLength counter
+                    counterText: "",
                   ),
                 ),
               ),

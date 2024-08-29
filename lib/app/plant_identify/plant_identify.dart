@@ -6,14 +6,14 @@
 // import 'package:http/http.dart' as http;
 // import 'dart:convert';
 
-// class PlantIdentifierPage extends StatefulWidget {
-//   const PlantIdentifierPage({super.key});
+// class PlantIdentifier extends StatefulWidget {
+//   const PlantIdentifier({super.key});
 
 //   @override
-//   _PlantIdentifierPageState createState() => _PlantIdentifierPageState();
+//   _PlantIdentifierPageS createState() => _PlantIdentifierPageS();
 // }
 
-// class _PlantIdentifierPageState extends State<PlantIdentifierPage> {
+// class _PlantIdentifierPageS extends State<PlantIdentifier> {
 //   File? _image;
 //   String _result = '';
 //   bool _isLoading = false;
@@ -156,14 +156,14 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-class PlantIdentifierPage extends StatefulWidget {
-  const PlantIdentifierPage({super.key});
+class PlantIdentifier extends StatefulWidget {
+  const PlantIdentifier({super.key});
 
   @override
-  _PlantIdentifierPageState createState() => _PlantIdentifierPageState();
+  _PlantIdentifierPageS createState() => _PlantIdentifierPageS();
 }
 
-class _PlantIdentifierPageState extends State<PlantIdentifierPage> {
+class _PlantIdentifierPageS extends State<PlantIdentifier> {
   File? _image;
   final Map<String, String> _plantInfo = {};
   bool _isLoading = false;
