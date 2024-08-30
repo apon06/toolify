@@ -40,7 +40,7 @@ class _BarcodeGenerateState extends State<BarcodeGenerate> {
             const SizedBox(height: 10),
             Container(
               height: 50,
-              width: 303,
+              width: 321,
               decoration: BoxDecoration(
                 color: Colors.grey[500],
                 borderRadius: BorderRadius.circular(7),

@@ -4,6 +4,7 @@ import 'package:toolify/app/cube_timer/cube_timer.dart';
 import 'package:toolify/screen/home/widgets/home_page_text.dart';
 import '../../../app/age_calculate/age_calculator.dart';
 import '../../../app/barcode_generate/barcode_generate.dart';
+import '../../../app/bmi_calculetor/bmi_calculetor.dart';
 import '../../../app/countdown_timer/countdown_timer.dart';
 import '../../../app/plant_identify/plant_identify.dart';
 import '../../../app/qr_generate/qr_generate.dart';
@@ -58,6 +59,11 @@ class HomePage extends StatelessWidget {
                       image: 'https://i.postimg.cc/hvhn8LM2/age-cal.png',
                       text: 'Age Calculator',
                       location: AgeCalculator(),
+                    ),
+                    HomePageCard(
+                      image: 'https://i.postimg.cc/QMWYLmrh/bmi.png',
+                      text: 'BMI Calculator',
+                      location: BMICalculatorScreen(),
                     ),
                   ],
                 ),

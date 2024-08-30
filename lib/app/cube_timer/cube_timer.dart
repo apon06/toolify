@@ -7,6 +7,7 @@ class TimerApp extends StatefulWidget {
   const TimerApp({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _TimerStateApp createState() => _TimerStateApp();
 }
 
