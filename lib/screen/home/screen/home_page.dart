@@ -20,96 +20,114 @@ class HomePage extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(4),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const HomePageText(text: 'Random Apps'),
-                GridView.count(
-                  shrinkWrap: true,
+          child: CustomScrollView(
+            slivers: [
+              const SliverToBoxAdapter(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    HomePageText(text: 'Random Apps'),
+                    SizedBox(height: 10),
+                  ],
+                ),
+              ),
+              SliverGrid(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3,
-                  children: const [
-                    HomePageCard(
+                  childAspectRatio: 1,
+                ),
+                delegate: SliverChildListDelegate(
+                  [
+                    const HomePageCard(
                       image: 'https://i.postimg.cc/sfmXjh3Q/plant.png',
                       text: 'Plant Find',
                       location: PlantIdentifier(),
                     ),
-                    HomePageCard(
+                    const HomePageCard(
                       image: 'https://i.postimg.cc/jScWH1JR/qr-code-gen.png',
                       text: 'Qr Generate',
                       location: QrGenerate(),
                     ),
-                    HomePageCard(
+                    const HomePageCard(
                       image: 'https://i.postimg.cc/7hhxhZDp/barcode.png',
                       text: 'BarCode Generate',
                       location: BarcodeGenerate(),
                     ),
-                    HomePageCard(
+                    const HomePageCard(
                       image: 'https://i.postimg.cc/59Xq1TPH/timer2.png',
                       text: 'Timer',
                       location: TimerApp(),
                     ),
-                    HomePageCard(
+                    const HomePageCard(
                       image: 'https://i.postimg.cc/wvQ7KSMG/countdown.png',
                       text: 'Countdown Timer',
                       location: CountdownTimer(),
                     ),
-                    HomePageCard(
+                    const HomePageCard(
                       image: 'https://i.postimg.cc/hvhn8LM2/age-cal.png',
                       text: 'Age Calculator',
                       location: AgeCalculator(),
                     ),
-                    HomePageCard(
+                    const HomePageCard(
                       image: 'https://i.postimg.cc/QMWYLmrh/bmi.png',
                       text: 'BMI Calculator',
                       location: BMICalculatorScreen(),
                     ),
                   ],
                 ),
-                const SizedBox(height: 15),
-                const HomePageText(text: 'Product'),
-                GridView.count(
-                  shrinkWrap: true,
-                  crossAxisCount: 3,
-                  children: const [
-                    HomePageCard(
-                      image: 'https://i.postimg.cc/QMWYLmrh/bmi.png',
-                      text: 'BMI Calculetor',
-                      location: HomePage(),
-                    ),
-                    HomePageCard(
-                      image: 'https://i.postimg.cc/QMWYLmrh/bmi.png',
-                      text: 'BMR Calculeror',
-                    ),
-                    HomePageCard(
-                      image: 'https://i.postimg.cc/QMWYLmrh/bmi.png',
-                      text: 'Age Calculetor',
-                    ),
-                    HomePageCard(
-                      image: 'https://i.postimg.cc/QMWYLmrh/bmi.png',
-                      text: 'Tip Calculetor',
-                    ),
-                    HomePageCard(
-                      image: 'https://i.postimg.cc/QMWYLmrh/bmi.png',
-                      text: 'Profit Calculetor',
-                    ),
-                    HomePageCard(
-                      image: 'https://i.postimg.cc/QMWYLmrh/bmi.png',
-                      text: 'Profit Calculetor',
-                    ),
-                    HomePageCard(
-                      image: 'https://i.postimg.cc/QMWYLmrh/bmi.png',
-                      text: 'Profit Calculetor',
-                    ),
-                    HomePageCard(
-                      image: 'https://i.postimg.cc/QMWYLmrh/bmi.png',
-                      text: 'Profit Calculetor',
-                    ),
+              ),
+              const SliverToBoxAdapter(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 15),
+                    HomePageText(text: 'Product'),
+                    SizedBox(height: 10),
                   ],
                 ),
-              ],
-            ),
+              ),
+              SliverGrid(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  childAspectRatio: 1,
+                ),
+                delegate: SliverChildListDelegate([
+                  const HomePageCard(
+                    image: 'https://i.postimg.cc/QMWYLmrh/bmi.png',
+                    text: 'BMI Calculetor',
+                    location: HomePage(),
+                  ),
+                  const HomePageCard(
+                    image: 'https://i.postimg.cc/QMWYLmrh/bmi.png',
+                    text: 'BMR Calculeror',
+                  ),
+                  const HomePageCard(
+                    image: 'https://i.postimg.cc/QMWYLmrh/bmi.png',
+                    text: 'Age Calculetor',
+                  ),
+                  const HomePageCard(
+                    image: 'https://i.postimg.cc/QMWYLmrh/bmi.png',
+                    text: 'Tip Calculetor',
+                  ),
+                  const HomePageCard(
+                    image: 'https://i.postimg.cc/QMWYLmrh/bmi.png',
+                    text: 'Profit Calculetor',
+                  ),
+                  const HomePageCard(
+                    image: 'https://i.postimg.cc/QMWYLmrh/bmi.png',
+                    text: 'Profit Calculetor',
+                  ),
+                  const HomePageCard(
+                    image: 'https://i.postimg.cc/QMWYLmrh/bmi.png',
+                    text: 'Profit Calculetor',
+                  ),
+                  const HomePageCard(
+                    image: 'https://i.postimg.cc/QMWYLmrh/bmi.png',
+                    text: 'Profit Calculetor',
+                  ),
+                ]),
+              ),
+            ],
           ),
         ),
       ),
