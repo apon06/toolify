@@ -29,9 +29,9 @@ class _TimerStateApp extends State<TimerApp> {
       _isRunning = true;
     });
 
-    _timer = Timer.periodic(const Duration(milliseconds: 10), (timer) {
+    _timer = Timer.periodic(const Duration(milliseconds: 100), (timer) {
       setState(() {
-        _milliseconds += 10;
+        _milliseconds += 100;
       });
       _saveTimerState();
     });
@@ -53,6 +53,13 @@ class _TimerStateApp extends State<TimerApp> {
       _timer?.cancel();
       _saveTimerState();
     });
+  }
+
+  @override
+  void dispose() {
+    _resetTimer();
+
+    super.dispose();
   }
 
   String _formatTime(int milliseconds) {
