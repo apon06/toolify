@@ -8,8 +8,8 @@ class BMICalculatorScreen extends StatefulWidget {
 }
 
 class BMICalculatorScreenState extends State<BMICalculatorScreen> {
-  double _height = 167.0; // Initial height in cm
-  double _weight = 68.0; // Initial weight in kg
+  double _height = 167.0;
+  double _weight = 68.0;
 
   double get _bmi {
     double heightInMeters = _height / 100;
@@ -18,19 +18,20 @@ class BMICalculatorScreenState extends State<BMICalculatorScreen> {
 
   Color get _bmiTextColor {
     if (_bmi < 18.5) {
-      return Colors.blue; // Underweight
+      return Colors.blue;
     } else if (_bmi >= 18.5 && _bmi <= 24.9) {
-      return Colors.green; // Normal
+      return Colors.green;
     } else if (_bmi >= 25 && _bmi <= 29.9) {
-      return Colors.orange; // Overweight
+      return Colors.orange;
     } else {
-      return Colors.red; // Obesity
+      return Colors.red;
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: const Text('BMI Calculetor'),),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -41,7 +42,7 @@ class BMICalculatorScreenState extends State<BMICalculatorScreen> {
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
-                color: _bmiTextColor, // Change color based on BMI
+                color: _bmiTextColor,
               ),
             ),
             const SizedBox(height: 40),

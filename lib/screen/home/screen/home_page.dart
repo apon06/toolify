@@ -7,6 +7,7 @@ import 'package:toolify/screen/home/widgets/home_page_text.dart';
 import '../../../app/age_calculate/age_calculator.dart';
 import '../../../app/barcode_generate/barcode_generate.dart';
 import '../../../app/bmi_calculetor/bmi_calculetor.dart';
+import '../../../app/bmr_calculetor/bmr_calculetor.dart';
 import '../../../app/countdown_timer/countdown_timer.dart';
 import '../../../app/plant_identify/plant_identify.dart';
 import '../../../app/qr_generate/qr_generate.dart';
@@ -136,70 +137,44 @@ class _HomePageState extends State<HomePage> {
                       text: 'Countdown Timer',
                       location: CountdownTimer(),
                     ),
+                  ],
+                ),
+              ),
+              const SliverToBoxAdapter(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 15),
+                    HomePageText(text: 'Calculetor'),
+                    SizedBox(height: 10),
+                  ],
+                ),
+              ),
+              SliverGrid(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  childAspectRatio: 1,
+                ),
+                delegate: SliverChildListDelegate(
+                  [
                     const HomePageCard(
-                      image: 'https://i.postimg.cc/hvhn8LM2/age-cal.png',
-                      text: 'Age Calculator',
-                      location: AgeCalculator(),
+                      image: 'https://i.postimg.cc/zXnyVBB3/bmr.png',
+                      text: 'BMR Calculetor',
+                      location: BMRCalculator(),
                     ),
                     const HomePageCard(
                       image: 'https://i.postimg.cc/QMWYLmrh/bmi.png',
                       text: 'BMI Calculator',
                       location: BMICalculatorScreen(),
                     ),
+                    const HomePageCard(
+                      image: 'https://i.postimg.cc/hvhn8LM2/age-cal.png',
+                      text: 'Age Calculator',
+                      location: AgeCalculator(),
+                    ),
                   ],
                 ),
               ),
-              // const SliverToBoxAdapter(
-              //   child: Column(
-              //     crossAxisAlignment: CrossAxisAlignment.start,
-              //     children: [
-              //       SizedBox(height: 15),
-              //       HomePageText(text: 'Product'),
-              //       SizedBox(height: 10),
-              //     ],
-              //   ),
-              // ),
-              // SliverGrid(
-              //   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              //     crossAxisCount: 3,
-              //     childAspectRatio: 1,
-              //   ),
-              //   delegate: SliverChildListDelegate([
-              //     const HomePageCard(
-              //       image: 'https://i.postimg.cc/QMWYLmrh/bmi.png',
-              //       text: 'BMI Calculetor',
-              //       location: HomePage(),
-              //     ),
-              //     const HomePageCard(
-              //       image: 'https://i.postimg.cc/QMWYLmrh/bmi.png',
-              //       text: 'BMR Calculeror',
-              //     ),
-              //     const HomePageCard(
-              //       image: 'https://i.postimg.cc/QMWYLmrh/bmi.png',
-              //       text: 'Age Calculetor',
-              //     ),
-              //     const HomePageCard(
-              //       image: 'https://i.postimg.cc/QMWYLmrh/bmi.png',
-              //       text: 'Tip Calculetor',
-              //     ),
-              //     const HomePageCard(
-              //       image: 'https://i.postimg.cc/QMWYLmrh/bmi.png',
-              //       text: 'Profit Calculetor',
-              //     ),
-              //     const HomePageCard(
-              //       image: 'https://i.postimg.cc/QMWYLmrh/bmi.png',
-              //       text: 'Profit Calculetor',
-              //     ),
-              //     const HomePageCard(
-              //       image: 'https://i.postimg.cc/QMWYLmrh/bmi.png',
-              //       text: 'Profit Calculetor',
-              //     ),
-              //     const HomePageCard(
-              //       image: 'https://i.postimg.cc/QMWYLmrh/bmi.png',
-              //       text: 'Profit Calculetor',
-              //     ),
-              //   ]),
-              // ),
             ],
           ),
         ),
