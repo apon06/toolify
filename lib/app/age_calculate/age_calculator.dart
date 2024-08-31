@@ -49,7 +49,7 @@ class _AgeCalculatorState extends State<AgeCalculator> {
     }
 
     setState(() {
-      _calculatedAge = "$years years ||$months months||$days days";
+      _calculatedAge = "$years years  $months months  $days days";
     });
   }
 
