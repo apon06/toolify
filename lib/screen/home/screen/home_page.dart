@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:toolify/app/cube_timer/cube_timer.dart';
+import 'package:toolify/app/money_manage/money_manage.dart';
 import 'package:toolify/app/tip_calculetor/tip_calculetor.dart';
 import 'package:toolify/screen/home/widgets/home_page_text.dart';
 import '../../../app/age_calculate/age_calculator.dart';
@@ -177,6 +178,11 @@ class _HomePageState extends State<HomePage> {
                       image: 'https://i.postimg.cc/wvF7P60T/tip.png',
                       text: 'Tip Calculator',
                       location: TipCalculatorHome(),
+                    ),
+                    const HomePageCard(
+                      image: 'https://i.postimg.cc/Ssm6N7TV/money-manage.png',
+                      text: 'Money Manage',
+                      location: MoneyManage(),
                     ),
                   ],
                 ),
