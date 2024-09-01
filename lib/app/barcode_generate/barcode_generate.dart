@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:barcode_widget/barcode_widget.dart';
+import 'package:screenshot/screenshot.dart';
+import 'package:image_gallery_saver/image_gallery_saver.dart';
 
 class BarcodeGenerate extends StatefulWidget {
   const BarcodeGenerate({super.key});
@@ -9,6 +11,7 @@ class BarcodeGenerate extends StatefulWidget {
 }
 
 class _BarcodeGenerateState extends State<BarcodeGenerate> {
+  final ScreenshotController _screenshotController = ScreenshotController();
   var data = "";
   final int maxLength = 100;
   Barcode selectedBarcode = Barcode.code128();
@@ -60,6 +63,22 @@ class _BarcodeGenerateState extends State<BarcodeGenerate> {
     Barcode.upcE(): {'maxLength': 8, 'keyboardType': TextInputType.number, 'hintText': 'Enter 8-digit number for UPC-E'},
   };
 
+  Future<void> _captureAndSave() async {
+    final image = await _screenshotController.capture();
+    if (image != null) {
+      final result = await ImageGallerySaver.saveImage(image);
+      // ignore: use_build_context_synchronously
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(result != null
+              ? 'Barcode saved to gallery!'
+              : 'Failed to save barcode', 
+              ),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final String selectedKey = barcodeTypes.entries
@@ -77,23 +96,32 @@ class _BarcodeGenerateState extends State<BarcodeGenerate> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Barcode Generator'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.download),
+            onPressed: _captureAndSave,
+          ),
+        ],
       ),
       body: Center(
         child: Column(
           children: [
             const SizedBox(height: 15),
-            Container(
-              width: 320,
-              height: 130,
-              color: Colors.white,
-              child: Center(
-                child: BarcodeWidget(
-                  barcode: selectedBarcode,
-                  data: data,
-                  width: 300,
-                  height: 100,
-                  backgroundColor: Colors.white,
-                  style: const TextStyle(color: Colors.black),
+            Screenshot(
+              controller: _screenshotController,
+              child: Container(
+                width: 320,
+                height: 130,
+                color: Colors.white,
+                child: Center(
+                  child: BarcodeWidget(
+                    barcode: selectedBarcode,
+                    data: data,
+                    width: 300,
+                    height: 100,
+                    backgroundColor: Colors.white,
+                    style: const TextStyle(color: Colors.black),
+                  ),
                 ),
               ),
             ),
@@ -114,7 +142,6 @@ class _BarcodeGenerateState extends State<BarcodeGenerate> {
                     setState(() {
                       data = value;
 
-                      // Show SnackBar if input exceeds max length
                       if (maxAllowedLength != null && value.length > maxAllowedLength) {
                         if (!isSnackBarShown) {
                           isSnackBarShown = true;
@@ -160,7 +187,7 @@ class _BarcodeGenerateState extends State<BarcodeGenerate> {
                 setState(() {
                   selectedBarcode = barcodeTypes[newValue!]!;
                   data = "";
-                  isSnackBarShown = false; // Reset SnackBar shown state
+                  isSnackBarShown = false;
                 });
               },
               items: barcodeTypes.keys.map<DropdownMenuItem<String>>((key) {

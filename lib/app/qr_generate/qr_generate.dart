@@ -1,5 +1,7 @@
-import 'package:barcode_widget/barcode_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:barcode_widget/barcode_widget.dart';
+import 'package:screenshot/screenshot.dart';
+import 'package:image_gallery_saver/image_gallery_saver.dart';
 
 class QrGenerate extends StatefulWidget {
   const QrGenerate({super.key});
@@ -9,37 +11,56 @@ class QrGenerate extends StatefulWidget {
 }
 
 class _QrGeneratePageS extends State<QrGenerate> {
+  final ScreenshotController _screenshotController = ScreenshotController();
   var qrData = "";
   final int maxLength = 2200;
+
+  Future<void> _captureAndSave() async {
+    final image = await _screenshotController.capture();
+    if (image != null) {
+      final result = await ImageGallerySaver.saveImage(image);
+      // ignore: use_build_context_synchronously
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(result != null
+              ? 'QR code saved to gallery!'
+              : 'Failed to save QR code'),
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Qr Code Generate'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.download),
+            onPressed: _captureAndSave,
+          ),
+        ],
       ),
       body: Center(
         child: Column(
           children: [
             const SizedBox(height: 15),
-            // QrImageView(
-            //   data: qrData,
-            //   version: QrVersions.auto,
-            //   size: 300.0,
-            //   backgroundColor: Colors.white,
-            // ),
-            Container(
-              width: 320,
-              height: 320,
-              color: Colors.white,
-              child: Center(
-                child: BarcodeWidget(
-                  barcode: Barcode.qrCode(),
-                  data: qrData,
-                  width: 300,
-                  height: 300,
-                  backgroundColor: Colors.white,
-                  style: const TextStyle(color: Colors.black),
+            Screenshot(
+              controller: _screenshotController,
+              child: Container(
+                width: 320,
+                height: 320,
+                color: Colors.white,
+                child: Center(
+                  child: BarcodeWidget(
+                    barcode: Barcode.qrCode(),
+                    data: qrData,
+                    width: 300,
+                    height: 300,
+                    backgroundColor: Colors.white,
+                    style: const TextStyle(color: Colors.black),
+                  ),
                 ),
               ),
             ),
