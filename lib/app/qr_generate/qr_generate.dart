@@ -1,5 +1,5 @@
+import 'package:barcode_widget/barcode_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:qr_flutter/qr_flutter.dart';
 
 class QrGenerate extends StatefulWidget {
   const QrGenerate({super.key});
@@ -22,16 +22,31 @@ class _QrGeneratePageS extends State<QrGenerate> {
         child: Column(
           children: [
             const SizedBox(height: 15),
-            QrImageView(
-              data: qrData,
-              version: QrVersions.auto,
-              size: 300.0,
-              backgroundColor: Colors.white,
+            // QrImageView(
+            //   data: qrData,
+            //   version: QrVersions.auto,
+            //   size: 300.0,
+            //   backgroundColor: Colors.white,
+            // ),
+            Container(
+              width: 320,
+              height: 320,
+              color: Colors.white,
+              child: Center(
+                child: BarcodeWidget(
+                  barcode: Barcode.qrCode(),
+                  data: qrData,
+                  width: 300,
+                  height: 300,
+                  backgroundColor: Colors.white,
+                  style: const TextStyle(color: Colors.black),
+                ),
+              ),
             ),
             const SizedBox(height: 10),
             Container(
               height: 50,
-              width: 303,
+              width: 323,
               decoration: BoxDecoration(
                 color: Colors.grey[500],
                 borderRadius: BorderRadius.circular(7),

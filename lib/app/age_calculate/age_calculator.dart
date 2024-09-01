@@ -67,7 +67,7 @@ class _AgeCalculatorState extends State<AgeCalculator> {
           children: <Widget>[
             Container(
               height: 70,
-              width: 230,
+              width: 300,
               decoration: BoxDecoration(
                   color: HexColor("262a35"),
                   borderRadius: BorderRadius.circular(8)),
