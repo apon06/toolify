@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
+import 'package:pdf/pdf.dart';
+import 'package:pdf/widgets.dart' as pw;
+import 'package:printing/printing.dart';
 
 class MoneyManage extends StatefulWidget {
   const MoneyManage({super.key});
@@ -49,6 +52,7 @@ class MoneyManageState extends State<MoneyManage> {
           'amount': amount,
           'sector': sector,
           'isIncome': true,
+          'timestamp': DateTime.now().toString(),
         });
         _saveData();
       });
@@ -66,6 +70,7 @@ class MoneyManageState extends State<MoneyManage> {
           'amount': amount,
           'sector': sector,
           'isIncome': false,
+          'timestamp': DateTime.now().toString(),
         });
         _saveData();
       });
@@ -84,8 +89,7 @@ class MoneyManageState extends State<MoneyManage> {
       builder: (BuildContext context) {
         return AlertDialog(
           title: const Text('Confirm Deletion'),
-          content:
-              const Text('Are you sure you want to delete this transaction?'),
+          content: const Text('Are you sure you want to delete this transaction?'),
           actions: <Widget>[
             TextButton(
               child: const Text('No'),
@@ -119,12 +123,49 @@ class MoneyManageState extends State<MoneyManage> {
     });
   }
 
+  Future<void> _downloadPDF() async {
+    final pdf = pw.Document();
+
+    pdf.addPage(
+      pw.Page(
+        build: (pw.Context context) => pw.Column(
+          crossAxisAlignment: pw.CrossAxisAlignment.start,
+          children: [
+            pw.Text('Transaction History', style: const pw.TextStyle(fontSize: 24)),
+            pw.SizedBox(height: 20),
+            pw.Text('Total Money: \$${totalMoney.toStringAsFixed(2)}', style: const pw.TextStyle(fontSize: 18)),
+            pw.SizedBox(height: 10),
+            pw.TableHelper.fromTextArray(
+              headers: ['Timestamp', 'Sector', 'Amount', 'Type'],
+              data: transactions.map((transaction) {
+                return [
+                  DateTime.parse(transaction['timestamp']).toLocal().toString(),
+                  transaction['sector'],
+                  '\$${transaction['amount'].toStringAsFixed(2)}',
+                  transaction['isIncome'] ? 'Added' : 'Removed'
+                ];
+              }).toList(),
+            ),
+          ],
+        ),
+      ),
+    );
+
+    await Printing.layoutPdf(onLayout: (PdfPageFormat format) async => pdf.save());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Money Manage"),
         centerTitle: true,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.download),
+            onPressed: _downloadPDF,
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -187,10 +228,11 @@ class MoneyManageState extends State<MoneyManage> {
                         title: Text(
                           '${transaction['sector']} - \$${transaction['amount'].toStringAsFixed(2)}',
                           style: TextStyle(
-                            color: transaction['isIncome']
-                                ? Colors.green
-                                : Colors.red,
+                            color: transaction['isIncome'] ? Colors.green : Colors.red,
                           ),
+                        ),
+                        subtitle: Text(
+                          'Time: ${DateTime.parse(transaction['timestamp']).toLocal()}',
                         ),
                       ),
                     ),
