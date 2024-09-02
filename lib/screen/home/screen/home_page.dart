@@ -12,6 +12,7 @@ import '../../../app/bmi_calculetor/bmi_calculetor.dart';
 import '../../../app/bmr_calculetor/bmr_calculetor.dart';
 import '../../../app/countdown_timer/countdown_timer.dart';
 import '../../../app/discount_app/discount_app.dart';
+import '../../../app/image_compresse/image_compresse.dart';
 import '../../../app/plant_identify/plant_identify.dart';
 import '../../../app/qr_generate/qr_generate.dart';
 import '../../../core/quick_action.dart';
@@ -191,6 +192,32 @@ class _HomePageState extends State<HomePage> {
                       image: 'https://i.postimg.cc/gk4QXB5x/discount.png',
                       text: 'Discount Money',
                       location: DiscountPage(),
+                    ),
+                  ],
+                ),
+              ),
+              const SliverToBoxAdapter(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 15),
+                    HomePageText(text: 'Image'),
+                    SizedBox(height: 10),
+                  ],
+                ),
+              ),
+              SliverGrid(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  childAspectRatio: 1,
+                ),
+                delegate: SliverChildListDelegate(
+                  [
+                    const HomePageCard(
+                      image:
+                          'https://i.postimg.cc/fbtb5m77/image-compressor.png',
+                      text: 'Image Compresse',
+                      location: ImageCompresse(),
                     ),
                   ],
                 ),
