@@ -58,7 +58,6 @@ class _TimerStateApp extends State<TimerApp> {
   @override
   void dispose() {
     _resetTimer();
-
     super.dispose();
   }
 
