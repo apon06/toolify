@@ -10,7 +10,7 @@ import 'package:screenshot/screenshot.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
-class ImageCompresse extends StatefulWidget {
+class ImageCompresse extends StatefulWidget { 
   const ImageCompresse({super.key});
 
   @override
