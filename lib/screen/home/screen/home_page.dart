@@ -14,6 +14,7 @@ import '../../../app/countdown_timer/countdown_timer.dart';
 import '../../../app/discount_app/discount_app.dart';
 import '../../../app/plant_identify/plant_identify.dart';
 import '../../../app/qr_generate/qr_generate.dart';
+import '../../../core/quick_action.dart';
 import '../widgets/home_page_card.dart';
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
@@ -31,6 +32,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     checkForUpdate();
+    initializeAction(context);
   }
 
   Future<void> checkForUpdate() async {
