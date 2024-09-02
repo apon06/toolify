@@ -6,11 +6,12 @@ import 'package:toolify/app/cube_timer/cube_timer.dart';
 import 'package:toolify/app/money_manage/money_manage.dart';
 import 'package:toolify/app/tip_calculetor/tip_calculetor.dart';
 import 'package:toolify/screen/home/widgets/home_page_text.dart';
-import '../../../app/age_calculate/age_calculator.dart';
+import '../../../app/age_calculator/age_calculator.dart';
 import '../../../app/barcode_generate/barcode_generate.dart';
 import '../../../app/bmi_calculetor/bmi_calculetor.dart';
 import '../../../app/bmr_calculetor/bmr_calculetor.dart';
 import '../../../app/countdown_timer/countdown_timer.dart';
+import '../../../app/discount_app/discount_app.dart';
 import '../../../app/plant_identify/plant_identify.dart';
 import '../../../app/qr_generate/qr_generate.dart';
 import '../widgets/home_page_card.dart';
@@ -183,6 +184,11 @@ class _HomePageState extends State<HomePage> {
                       image: 'https://i.postimg.cc/Ssm6N7TV/money-manage.png',
                       text: 'Money Manage',
                       location: MoneyManage(),
+                    ),
+                    const HomePageCard(
+                      image: 'https://i.postimg.cc/gk4QXB5x/discount.png',
+                      text: 'Discount Money',
+                      location: DiscountPage(),
                     ),
                   ],
                 ),
