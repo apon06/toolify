@@ -11,6 +11,7 @@ import '../../../app/barcode_generate/barcode_generate.dart';
 import '../../../app/bmi_calculetor/bmi_calculetor.dart';
 import '../../../app/bmr_calculetor/bmr_calculetor.dart';
 import '../../../app/countdown_timer/countdown_timer.dart';
+import '../../../app/device_information/device_information.dart';
 import '../../../app/discount_app/discount_app.dart';
 import '../../../app/image_compresse/image_compresse.dart';
 import '../../../app/plant_identify/plant_identify.dart';
@@ -142,6 +143,11 @@ class _HomePageState extends State<HomePage> {
                       image: 'https://i.postimg.cc/wvQ7KSMG/countdown.png',
                       text: 'Countdown Timer',
                       location: CountdownTimer(),
+                    ),
+                    const HomePageCard(
+                      image: 'https://i.postimg.cc/59mdMCrb/device-info.png',
+                      text: 'Device Info',
+                      location: DeviceInformation(),
                     ),
                   ],
                 ),
