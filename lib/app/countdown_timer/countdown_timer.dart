@@ -52,10 +52,10 @@ class _CountdownTimerState extends State<CountdownTimer> {
       _isRunning = true;
     });
 
-    _timer = Timer.periodic(const Duration(milliseconds: 10), (timer) {
+    _timer = Timer.periodic(const Duration(milliseconds: 100), (timer) {
       if (_milliseconds > 0) {
         setState(() {
-          _milliseconds -= 10;
+          _milliseconds -= 100;
         });
         _saveTimerState();
       } else {
@@ -81,6 +81,13 @@ class _CountdownTimerState extends State<CountdownTimer> {
       _timer?.cancel();
     });
     _saveTimerState();
+  }
+
+  @override
+  void dispose() {
+    _resetTimer();
+
+    super.dispose();
   }
 
   String _formatTime(int milliseconds) {
