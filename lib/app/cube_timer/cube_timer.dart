@@ -7,11 +7,10 @@ class TimerApp extends StatefulWidget {
   const TimerApp({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
-  _TimerStateApp createState() => _TimerStateApp();
+  TimerStateApp createState() => TimerStateApp();
 }
 
-class _TimerStateApp extends State<TimerApp> {
+class TimerStateApp extends State<TimerApp> {
   Timer? _timer;
   int _milliseconds = 0;
   bool _isRunning = false;
@@ -44,6 +43,7 @@ class _TimerStateApp extends State<TimerApp> {
       _isRunning = false;
       _timer?.cancel();
     });
+    _saveTimerState();
   }
 
   void _resetTimer() {
@@ -53,6 +53,12 @@ class _TimerStateApp extends State<TimerApp> {
       _timer?.cancel();
       _saveTimerState();
     });
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
   }
 
   String _formatTime(int milliseconds) {

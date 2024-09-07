@@ -157,7 +157,7 @@ class _HomePageState extends State<HomePage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(height: 15),
-                    HomePageText(text: 'Calculetor'),
+                    HomePageText(text: 'Calculator'),
                     SizedBox(height: 10),
                   ],
                 ),

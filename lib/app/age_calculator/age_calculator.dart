@@ -49,7 +49,7 @@ class _AgeCalculatorState extends State<AgeCalculator> {
     }
 
     setState(() {
-      _calculatedAge = "$years years ||$months months||$days days";
+      _calculatedAge = "$years years  $months months  $days days";
     });
   }
 
@@ -101,7 +101,7 @@ class _AgeCalculatorState extends State<AgeCalculator> {
               child: Center(
                 child: Text(
                   _selectedDate == null
-                      ? "0 years ||0 months||0 days"
+                      ? "0 years  0 months  0 days"
                       : _calculatedAge,
                   style: const TextStyle(
                     fontSize: 22,
