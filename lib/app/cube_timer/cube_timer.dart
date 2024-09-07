@@ -7,11 +7,10 @@ class TimerApp extends StatefulWidget {
   const TimerApp({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
-  _TimerStateApp createState() => _TimerStateApp();
+  TimerStateApp createState() => TimerStateApp();
 }
 
-class _TimerStateApp extends State<TimerApp> {
+class TimerStateApp extends State<TimerApp> {
   Timer? _timer;
   int _milliseconds = 0;
   bool _isRunning = false;
@@ -29,9 +28,9 @@ class _TimerStateApp extends State<TimerApp> {
       _isRunning = true;
     });
 
-    _timer = Timer.periodic(const Duration(milliseconds: 100), (timer) {
+    _timer = Timer.periodic(const Duration(milliseconds: 10), (timer) {
       setState(() {
-        _milliseconds += 100;
+        _milliseconds += 10;
       });
       _saveTimerState();
     });
@@ -44,6 +43,7 @@ class _TimerStateApp extends State<TimerApp> {
       _isRunning = false;
       _timer?.cancel();
     });
+    _saveTimerState();
   }
 
   void _resetTimer() {
@@ -57,7 +57,7 @@ class _TimerStateApp extends State<TimerApp> {
 
   @override
   void dispose() {
-    _resetTimer();
+    _timer?.cancel();
     super.dispose();
   }
 

@@ -7,14 +7,13 @@ class CountdownTimer extends StatefulWidget {
   const CountdownTimer({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
-  _CountdownTimerState createState() => _CountdownTimerState();
+  CountdownTimerState createState() => CountdownTimerState();
 }
 
-class _CountdownTimerState extends State<CountdownTimer> {
+class CountdownTimerState extends State<CountdownTimer> {
   Timer? _timer;
   int _milliseconds = 0;
-  int _initialTime = 0; // Default to 0
+  int _initialTime = 0; 
   bool _isRunning = false;
   int _selectedHours = 0;
   int _selectedMinutes = 0;
@@ -40,9 +39,9 @@ class _CountdownTimerState extends State<CountdownTimer> {
 
   Future<void> _saveTimerState() async {
     final prefs = await SharedPreferences.getInstance();
-    prefs.setInt('timer_milliseconds', _milliseconds);
-    prefs.setInt('initial_time', _initialTime);
-    prefs.setBool('timer_is_running', _isRunning);
+    await prefs.setInt('timer_milliseconds', _milliseconds);
+    await prefs.setInt('initial_time', _initialTime);
+    await prefs.setBool('timer_is_running', _isRunning);
   }
 
   void _startTimer() {
@@ -52,10 +51,10 @@ class _CountdownTimerState extends State<CountdownTimer> {
       _isRunning = true;
     });
 
-    _timer = Timer.periodic(const Duration(milliseconds: 100), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (_milliseconds > 0) {
         setState(() {
-          _milliseconds -= 100;
+          _milliseconds -= 1000;
         });
         _saveTimerState();
       } else {
@@ -86,7 +85,7 @@ class _CountdownTimerState extends State<CountdownTimer> {
   @override
   void dispose() {
     _resetTimer();
-
+    
     super.dispose();
   }
 
