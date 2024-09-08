@@ -16,6 +16,7 @@ import '../../../app/discount_app/discount_app.dart';
 import '../../../app/image_compresse/image_compresse.dart';
 import '../../../app/plant_identify/plant_identify.dart';
 import '../../../app/qr_generate/qr_generate.dart';
+import '../../../app/torch_light/torch_light.dart';
 import '../../../core/quick_action.dart';
 import '../widgets/home_page_card.dart';
 import 'package:http/http.dart' as http;
@@ -108,7 +109,6 @@ class _HomePageState extends State<HomePage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     HomePageText(text: 'Random Apps'),
-                    SizedBox(height: 10),
                   ],
                 ),
               ),
@@ -149,6 +149,11 @@ class _HomePageState extends State<HomePage> {
                       text: 'Device Info',
                       location: DeviceInformation(),
                     ),
+                    const HomePageCard(
+                      image: 'https://i.postimg.cc/YCLbjtxy/torch-light.png',
+                      text: 'Flash Light',
+                      location: FlashlightHome(),
+                    ),
                   ],
                 ),
               ),
@@ -156,9 +161,7 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 15),
                     HomePageText(text: 'Calculator'),
-                    SizedBox(height: 10),
                   ],
                 ),
               ),
@@ -206,9 +209,7 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 15),
                     HomePageText(text: 'Image'),
-                    SizedBox(height: 10),
                   ],
                 ),
               ),
