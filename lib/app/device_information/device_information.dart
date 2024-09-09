@@ -1,8 +1,11 @@
+// ignore_for_file: unrelated_type_equality_checks
+
 import 'package:flutter/material.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:battery_plus/battery_plus.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:system_info2/system_info2.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'dart:math' as math;
 
 class DeviceInformation extends StatefulWidget {
@@ -22,6 +25,10 @@ class DeviceInformationState extends State<DeviceInformation> {
   String _availableRAM = 'Unknown';
   String _totalStorage = 'Unknown';
   String _availableStorage = 'Unknown';
+  String _cpuArchitecture = 'Unknown'; // New field
+  String _screenResolution = 'Unknown'; // New field
+  String _networkStatus = 'Unknown'; // New field
+  String _isRooted = 'Unknown'; // New field
 
   final Battery _battery = Battery();
   final DeviceInfoPlugin _deviceInfoPlugin = DeviceInfoPlugin();
@@ -34,6 +41,10 @@ class DeviceInformationState extends State<DeviceInformation> {
     _getAppInfo();
     _getMemoryInfo();
     _getStorageInfo();
+    _getCPUInfo();
+    _getScreenResolution();
+    _getNetworkStatus();
+    _checkIfRooted();
   }
 
   Future<void> _initDeviceInfo() async {
@@ -82,6 +93,57 @@ class DeviceInformationState extends State<DeviceInformation> {
     setState(() {
       _totalStorage = _formatBytes(totalStorageBytes);
       _availableStorage = _formatBytes(availableStorageBytes);
+    });
+  }
+
+  // New method to get CPU architecture
+  Future<void> _getCPUInfo() async {
+    var deviceInfo = await _deviceInfoPlugin.deviceInfo;
+    var cpuArch =
+        deviceInfo.data['supportedAbis']?.first ?? 'Unknown'; // For Android
+
+    setState(() {
+      _cpuArchitecture = cpuArch;
+    });
+  }
+
+  // New method to get screen resolution
+  Future<void> _getScreenResolution() async {
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+
+    setState(() {
+      _screenResolution = '${width.toInt()} x ${height.toInt()}';
+    });
+  }
+
+  // New method to get network status
+  Future<void> _getNetworkStatus() async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    String networkType;
+
+    if (connectivityResult == ConnectivityResult.mobile) {
+      networkType = "Mobile Data";
+    } else if (connectivityResult == ConnectivityResult.wifi) {
+      networkType = "Wi-Fi";
+    } else {
+      networkType = "No Internet Connection";
+    }
+
+    setState(() {
+      _networkStatus = networkType;
+    });
+  }
+
+  // New method to check if the device is rooted (basic check)
+  Future<void> _checkIfRooted() async {
+    // You can use platform-specific checks to see if the device is rooted/jailbroken
+    var isRooted =
+        false; // Placeholder - Implement more advanced checks if necessary
+
+    setState(() {
+      // ignore: dead_code
+      _isRooted = isRooted ? "Yes" : "No";
     });
   }
 
@@ -137,6 +199,22 @@ class DeviceInformationState extends State<DeviceInformation> {
             ListTile(
               title: const Text('Available Storage'),
               subtitle: Text(_availableStorage),
+            ),
+            ListTile(
+              title: const Text('CPU Architecture'),
+              subtitle: Text(_cpuArchitecture),
+            ),
+            ListTile(
+              title: const Text('Screen Resolution'),
+              subtitle: Text(_screenResolution),
+            ),
+            ListTile(
+              title: const Text('Network Status'),
+              subtitle: Text(_networkStatus),
+            ),
+            ListTile(
+              title: const Text('Is Rooted'),
+              subtitle: Text(_isRooted),
             ),
           ],
         ),
