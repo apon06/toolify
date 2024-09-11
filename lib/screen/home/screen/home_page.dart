@@ -16,7 +16,7 @@ import '../../../app/discount_app/discount_app.dart';
 import '../../../app/image_compresse/image_compresse.dart';
 import '../../../app/plant_identify/plant_identify.dart';
 import '../../../app/qr_generate/qr_generate.dart';
-import '../../../app/torch_light/torch_light.dart';
+// import '../../../app/torch_light/torch_light.dart';
 import '../../../core/quick_action.dart';
 import '../widgets/home_page_card.dart';
 import 'package:http/http.dart' as http;
@@ -149,11 +149,11 @@ class _HomePageState extends State<HomePage> {
                       text: 'Device Info',
                       location: DeviceInformation(),
                     ),
-                    const HomePageCard(
-                      image: 'https://i.postimg.cc/YCLbjtxy/torch-light.png',
-                      text: 'Flash Light',
-                      location: FlashlightHome(),
-                    ),
+                    // const HomePageCard(
+                    //   image: 'https://i.postimg.cc/YCLbjtxy/torch-light.png',
+                    //   text: 'Flash Light',
+                    //   location: FlashlightHome(),
+                    // ),
                   ],
                 ),
               ),
