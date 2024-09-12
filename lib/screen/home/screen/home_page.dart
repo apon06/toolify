@@ -1,5 +1,4 @@
 // ignore_for_file: deprecated_member_use
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:toolify/app/cube_timer/cube_timer.dart';
@@ -19,9 +18,6 @@ import '../../../app/qr_generate/qr_generate.dart';
 // import '../../../app/torch_light/torch_light.dart';
 import '../../../core/quick_action.dart';
 import '../widgets/home_page_card.dart';
-import 'package:http/http.dart' as http;
-import 'package:url_launcher/url_launcher.dart';
-import 'package:package_info_plus/package_info_plus.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -34,66 +30,11 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    checkForUpdate();
+    // checkForUpdate();
     initializeAction(context);
   }
 
-  Future<void> checkForUpdate() async {
-    try {
-      final response = await http.get(
-          Uri.parse('https://apon06.github.io/bookify_api/app_update.json'));
-
-      if (response.statusCode == 200) {
-        final data = json.decode(response.body);
-        String latestVersion = data['latest_version'];
-        String updateMessage = data['update_message'];
-
-        PackageInfo packageInfo = await PackageInfo.fromPlatform();
-        String currentVersion = packageInfo.version;
-
-        if (latestVersion != currentVersion) {
-          showUpdateDialog(updateMessage);
-        }
-      } else {
-        //
-      }
-    } catch (e) {
-      //
-    }
-  }
-
-  void showUpdateDialog(String message) {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Update Available'),
-        content: Text(message),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            child: const Text('Later'),
-          ),
-          TextButton(
-            onPressed: () async {
-              const String appUpdateUrl =
-                  'https://github.com/apon06/toolify/releases';
-
-              final Uri url = Uri.parse(appUpdateUrl);
-
-              if (await canLaunch(url.toString())) {
-                await launch(url.toString());
-              } else {
-                await launch(url.toString());
-              }
-            },
-            child: const Text('Update Now'),
-          ),
-        ],
-      ),
-    );
-  }
+  
 
   @override
   Widget build(BuildContext context) {
