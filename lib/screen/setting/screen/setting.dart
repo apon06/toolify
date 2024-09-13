@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:package_info_plus/package_info_plus.dart';
 import 'package:toolify/screen/setting/screen/app_information_page.dart';
 import 'package:toolify/screen/setting/screen/change_log_page.dart';
 
@@ -11,29 +10,6 @@ class SettingPage extends StatefulWidget {
 }
 
 class _SettingPageState extends State<SettingPage> {
-  String version = "";
-  String appName = "";
-  String packageName = "";
-
-  @override
-  void initState() {
-    super.initState();
-    _getAppVersion();
-  }
-
-  Future<void> _getAppVersion() async {
-    PackageInfo packageInfo = await PackageInfo.fromPlatform();
-
-    appName = packageInfo.appName;
-    packageName = packageInfo.packageName;
-    String versionNumber = packageInfo.version;
-    String buildNumber = packageInfo.buildNumber;
-
-    setState(() {
-      version = '$versionNumber+$buildNumber';
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

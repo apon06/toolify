@@ -89,7 +89,8 @@ class MoneyManageState extends State<MoneyManage> {
       builder: (BuildContext context) {
         return AlertDialog(
           title: const Text('Confirm Deletion'),
-          content: const Text('Are you sure you want to delete this transaction?'),
+          content:
+              const Text('Are you sure you want to delete this transaction?'),
           actions: <Widget>[
             TextButton(
               child: const Text('No'),
@@ -131,9 +132,11 @@ class MoneyManageState extends State<MoneyManage> {
         build: (pw.Context context) => pw.Column(
           crossAxisAlignment: pw.CrossAxisAlignment.start,
           children: [
-            pw.Text('Transaction History', style: const pw.TextStyle(fontSize: 24)),
+            pw.Text('Transaction History',
+                style: const pw.TextStyle(fontSize: 24)),
             pw.SizedBox(height: 20),
-            pw.Text('Total Money: \$${totalMoney.toStringAsFixed(2)}', style: const pw.TextStyle(fontSize: 18)),
+            pw.Text('Total Money: \$${totalMoney.toStringAsFixed(2)}',
+                style: const pw.TextStyle(fontSize: 18)),
             pw.SizedBox(height: 10),
             pw.TableHelper.fromTextArray(
               headers: ['Timestamp', 'Sector', 'Amount', 'Type'],
@@ -151,7 +154,8 @@ class MoneyManageState extends State<MoneyManage> {
       ),
     );
 
-    await Printing.layoutPdf(onLayout: (PdfPageFormat format) async => pdf.save());
+    await Printing.layoutPdf(
+        onLayout: (PdfPageFormat format) async => pdf.save());
   }
 
   @override
@@ -228,7 +232,9 @@ class MoneyManageState extends State<MoneyManage> {
                         title: Text(
                           '${transaction['sector']} - \$${transaction['amount'].toStringAsFixed(2)}',
                           style: TextStyle(
-                            color: transaction['isIncome'] ? Colors.green : Colors.red,
+                            color: transaction['isIncome']
+                                ? Colors.green
+                                : Colors.red,
                           ),
                         ),
                         subtitle: Text(

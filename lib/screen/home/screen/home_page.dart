@@ -4,6 +4,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:toolify/app/cube_timer/cube_timer.dart';
 import 'package:toolify/app/money_manage/money_manage.dart';
 import 'package:toolify/app/tip_calculetor/tip_calculetor.dart';
+import 'package:toolify/app/vat_calculator/vat_calculator.dart';
 import 'package:toolify/screen/home/widgets/home_page_text.dart';
 import '../../../app/age_calculator/age_calculator.dart';
 import '../../../app/barcode_generate/barcode_generate.dart';
@@ -33,8 +34,6 @@ class _HomePageState extends State<HomePage> {
     // checkForUpdate();
     initializeAction(context);
   }
-
-  
 
   @override
   Widget build(BuildContext context) {
@@ -142,6 +141,11 @@ class _HomePageState extends State<HomePage> {
                       image: 'https://i.postimg.cc/gk4QXB5x/discount.png',
                       text: 'Discount Money',
                       location: DiscountPage(),
+                    ),
+                    const HomePageCard(
+                      image: 'https://i.postimg.cc/SxfLw2Gv/vat.png',
+                      text: 'VAT Calculator',
+                      location: VatCalculator(),
                     ),
                   ],
                 ),

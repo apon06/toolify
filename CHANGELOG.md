@@ -1,2 +1,5 @@
 ## 1.0.0
- - Basic App And functionality and 14 App
+ - Basic App
+
+## 1.0.1
+ - bug fixes, and improvements will be released more frequently.

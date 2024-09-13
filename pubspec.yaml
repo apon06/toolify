@@ -1,8 +1,9 @@
 name: toolify
-description: "A new Flutter project."
+description: "A open source toolkit app"
 publish_to: "none"
+home: https://gokeihub.blogspot.com/
 
-version: 1.0.0+1
+version: 1.0.1+2
 
 environment:
   sdk: ">=3.4.0 <4.0.0"
