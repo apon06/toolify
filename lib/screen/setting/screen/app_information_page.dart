@@ -35,7 +35,9 @@ class _AppInformationPageState extends State<AppInformationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text("App Information"),
+      ),
       body: Column(
         children: [
           Card(
