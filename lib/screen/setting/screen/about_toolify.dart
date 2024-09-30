@@ -2,7 +2,7 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:toolify/screen/setting/widgets/text_button_widget.dart';
+import '../widgets/text_button_widget.dart';
 
 class AboutToolify extends StatelessWidget {
   const AboutToolify({super.key});
@@ -25,7 +25,7 @@ class AboutToolify extends StatelessWidget {
                     height: 100,
                     width: 100,
                     child: CachedNetworkImage(
-                      imageUrl: "https://i.postimg.cc/PqhH5cYq/app-icon.webp",
+                      imageUrl: "https://i.postimg.cc/GpyZ9kJL/calculetor.png",
                     ),
                   ),
                 ),
@@ -43,7 +43,7 @@ class AboutToolify extends StatelessWidget {
                     text: "Gokei Hub", url: 'https://gokeihub.blogspot.com/'),
                 const SizedBox(height: 15),
                 const Text(
-                  "Toolify is free, open-source app where you will find various apps you need. Which you can use very easily",
+                  "Toolidy is free, open-source App",
                 ),
                 const SizedBox(height: 15),
                 const Align(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:barcode_widget/barcode_widget.dart';
 import 'package:screenshot/screenshot.dart';
-import 'package:image_gallery_saver/image_gallery_saver.dart';
+import 'package:image_gallery_saver_plus/image_gallery_saver_plus.dart';
 
 class QrGenerate extends StatefulWidget {
   const QrGenerate({super.key});
@@ -18,7 +18,7 @@ class _QrGeneratePageS extends State<QrGenerate> {
   Future<void> _captureAndSave() async {
     final image = await _screenshotController.capture();
     if (image != null) {
-      final result = await ImageGallerySaver.saveImage(image);
+      final result = await ImageGallerySaverPlus.saveImage(image);
       // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
